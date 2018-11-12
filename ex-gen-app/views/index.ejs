@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+      
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p class="attention"><%= content %></p>
+    <form method ="post" action="/post">
+      <p>
+        <input type="radio" name="select"value="グー"> グー
+        <input type="radio" name="select"value="チョキ"> チョキ
+        <input type="radio" name="select"value="パー"> パー
+        <input type="submit" name="Click" value="選択">　　 
+      </p>
+      <p><a href="<%=link.herf %>"><%=link.text %></a></p>
+  </form>
+  </body>
+</html>

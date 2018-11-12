@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="content-type"
+         content="text/html;charset=UTF-8">
+        <title><%=title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script src="/javascripts/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#btn').click(function(){
+                    $.getJSON("/json/sample.json",function(sample_list){                  
+                        var key =Object.keys(sample_list);
+                        console.log(key);
+                        var i =key[Math.floor(Math.random()*key.length)];
+                        console.log(i);
+                        var msg = '相手が「'+ sample_list[i].name + '」を選んだ！';
+                        $('#msg').html(msg);
+                    });
+                    $.getJSON("http://localhost:3000/post",function(response){ 
+                        console.log(response);
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1><%=title %></title></h1>
+        </header>
+        <div role="main">
+            <p id='msg'></p>
+            <input type="button" id="btn" value="対戦開始">
+
+            <p><a href="<%=link.herf %>"><%=link.text %></a></p>
+        </div>
+    </body>
+</html>

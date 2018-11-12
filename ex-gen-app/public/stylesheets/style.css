@@ -1,0 +1,21 @@
+h1{
+  font-size: 50pt;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: -10px;
+  margin: 20px;
+}
+body{
+  font-size: 12pt;
+  margin: 20px; 
+  text-align: center;
+}
+p{
+  font-size: 14pt;
+  margin: 0px 20px; 
+  line-height: 200%;
+  margin: 20px;
+}
+.attention{
+  color: brown;
+}
