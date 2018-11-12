@@ -7,32 +7,17 @@
         <link rel='stylesheet' href='/stylesheets/style.css' />
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="/javascripts/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('#btn').click(function(){
-                    $.getJSON("/json/sample.json",function(sample_list){                  
-                        var key =Object.keys(sample_list);
-                        console.log(key);
-                        var i =key[Math.floor(Math.random()*key.length)];
-                        console.log(i);
-                        var msg = '相手が「'+ sample_list[i].name + '」を選んだ！';
-                        $('#msg').html(msg);
-                    });
-                    $.getJSON("http://localhost:3000/post",function(response){ 
-                        console.log(response);
-                    });
-                });
-            });
-        </script>
     </head>
 
-    <body>
+    <body>  
         <header>
             <h1><%=title %></title></h1>
         </header>
         <div role="main">
-            <p id='msg'></p>
-            <input type="button" id="btn" value="対戦開始">
+            <p class="attention">結果は以下の通り</p>
+            <p><%= content1 %></p>
+            <p><%= content2 %></p>
+            <p class="attention"><%= content3 %></p>
 
             <p><a href="<%=link.herf %>"><%=link.text %></a></p>
         </div>
