@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-
+var j = require('./judge.js');
+var pc = require('./pc.js');
+var sm = require('./samplename.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,35 +16,26 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/result',function(req, res, next) {
-  var msg = req.body['select'];
- var sample = JSON.parse(fs.readFileSync('../ex-gen-app/public/json/sample.json', 'utf8'))
- console.log(sample);
- var key =Object.keys(sample);
- console.log(key);
- var i =key[Math.floor(Math.random()*key.length)];
- console.log(i);
+ var msg = req.body['select'];
  if(msg == "グー" ) {
   cpunum = 0;
 } else if(msg == "チョキ") {
   cpunum = 1;
 } else if(msg == "パー") {
   cpunum = 2;
-}
-if(cpunum == 0 && i == 1) {
-  judge = "あなたの勝ち";
-} else if(cpunum == 1 && i == 2) {
-  judge = "あなたの勝ち";
-} else if(cpunum == 2 && i == 0) {
-  judge = "あなたの勝ち";
-} else if(cpunum == i) {
-  judge = "ひきわけ";
-} else {
-  judge = "あなたの負け";
-}
+};
+ pc.randomPick();
+ var sample = pc.randomPick();
+ var i = pc.randomPick();
+ 
+ sm.sampleName(sample);
+ var data= sm.sampleName();
+ j.judgement(i);
+
   res.render('result.ejs',
   {title:'決戦！！',
   content1:'あなたは「'+ msg +'」を選んだ！',
-  content2:'相手が「'+ sample[i].name + '」を選んだ！',
+  content2:'相手が「'+ data + '」を選んだ！',
   content3:'なんと' + judge +'!',
    link:{herf:"/",text:'※もう一回'},
   });
