@@ -1,11 +1,6 @@
+   
 
-exports.sampleName = function(sample) {
-    console.log(sample);
-    
-    var datalist = JSON.parse(sample);
-    var len = datalist.length; 
-    for(var i=0; i<len; i++) {
-         var data=datalist[i].name;
-    }
+exports.sampleName = function(sample,i) { 
+    var data= sample[i].name;
     return data;
 }

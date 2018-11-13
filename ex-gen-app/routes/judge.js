@@ -1,5 +1,5 @@
 
-exports.judgement = function(i) {
+exports.judgement = function(i,cpunum) {
     if(cpunum == 0 && i == 1) {
         judge = "あなたの勝ち";
       } else if(cpunum == 1 && i == 2) {
@@ -11,4 +11,5 @@ exports.judgement = function(i) {
       } else {
         judge = "あなたの負け";
       }
+    return judge;
 };

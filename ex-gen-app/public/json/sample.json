@@ -1,14 +1,1 @@
-[
-    {
-        "name":"グー",
-        "value":0   
-    },
-    {
-        "name":"チョキ",
-        "value":1
-    },
-    {
-        "name":"パー",
-        "value":2
-    }
-]
+[{"name":"グー","value":0},{"name":"チョキ","value":1},{"name":"パー","value":2}]

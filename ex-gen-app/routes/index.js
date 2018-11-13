@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 var j = require('./judge.js');
 var pc = require('./pc.js');
-var sm = require('./samplename.js');
+var smn = require('./samplename.js');
+var sm = require('./sample.js');
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,23 +17,29 @@ router.get('/', function(req, res, next) {
   });
   });
 
-
 router.post('/result',function(req, res, next) {
- var msg = req.body['select'];
+ //ユーザー入力
+  var msg = req.body['select'];
+  var cpunum;
  if(msg == "グー" ) {
   cpunum = 0;
-} else if(msg == "チョキ") {
+　} else if(msg == "チョキ") {
   cpunum = 1;
-} else if(msg == "パー") {
+　} else if(msg == "パー") {
   cpunum = 2;
-};
- pc.randomPick();
- var sample = pc.randomPick();
- var i = pc.randomPick();
+　};
+
+ //json読み込み
+ var sample = sm.sample();
+
+//PC側値抽出
+ var i = pc.randomPick(sample);
  
- sm.sampleName(sample);
- var data= sm.sampleName();
- j.judgement(i);
+ //データネーム
+ var data= smn.sampleName(sample,i);
+
+ //決戦ジャージ
+ var judge= j.judgement(i,cpunum);
 
   res.render('result.ejs',
   {title:'決戦！！',
